@@ -69,20 +69,28 @@ Created by pixpalette.com - online design magazine -->
                             <li role="presentation"><a href="https://bundet.com/" target="_blank">Blog</a></li>
                         </ul>
 
+                        <!-- Content -->
                         <div class="tab-content">
+                            <div class="input-group" style="margin: 24px 0 24px 0;">
+                                <span style="border-radius: 16px 0 0 16px; border-color: yellow;"
+                                    class="input-group-addon" id="sizing-addon2">🔍</span>
+                                <input type="search" id="src" name="src" class="form-control"
+                                    oninput="updateResult(this.value)" placeholder="Search for ..."
+                                    style="border-radius: 0 16px 16px 0; background-color: #fff6c9; padding-left: 16px; font-weight: 400; border-color: yellow;">
+                            </div><!-- /input-group -->
                             <!--
                             PORTFOLIO
                             -->
                             <div role="tabpanel" class="tab-pane fade in active" id="buyTicket">
-                                <a href="#" onclick="updateResult(null)"><span
+                                <a href="#" onclick="updateCategory(null)"><span
                                         class="label label-default">all</span></a>
-                                <a href="#" onclick="updateResult('production')"><span
+                                <a href="#" onclick="updateCategory('production')"><span
                                         class="label label-success">production</span></a>
-                                <a href="#" onclick="updateResult('prototype')"><span
+                                <a href="#" onclick="updateCategory('prototype')"><span
                                         class="label label-primary">prototype</span></a>
-                                <a href="#" onclick="updateResult('component')"><span
+                                <a href="#" onclick="updateCategory('component')"><span
                                         class="label label-warning">component</span></a>
-                                <a href="#" onclick="updateResult('experiment')"><span
+                                <a href="#" onclick="updateCategory('experiment')"><span
                                         class="label label-danger">experiment</span></a>
                                 <br><br>
                                 <div class="row" id="mycontent">
@@ -1066,7 +1074,39 @@ Sebuah project jonki skripshit untuk membantu sobat, guna merealisasikan konsep 
 
         contents.forEach(myProduct);
 
+        var selectedCategory = '';
+
         function updateResult(query) {
+            console.log('src>> ' + query);
+            document.getElementById("mycontent").innerHTML = "";
+            myRemove();
+            refreshScript("js/allscript.js");
+
+            if (selectedCategory == null || selectedCategory == "") {
+                if (query == null || query == "") {
+                    contents.forEach(myProduct);
+                } else {
+                    let filters = contents.filter(item => item.title.toLowerCase().includes(query.toLowerCase())
+                        || item.sub_title.toLowerCase().includes(query.toLowerCase())
+                        || item.price_display.toLowerCase().includes(query.toLowerCase()));
+                    filters.forEach(myProduct);
+                }
+            } else {
+                let segmented = contents.filter(item => item.price_display.toLowerCase().includes(selectedCategory.toLowerCase()));
+                if (query == null || query == "") {
+                    segmented.forEach(myProduct);
+                } else {
+                    let filters = segmented.filter(item => item.title.toLowerCase().includes(query.toLowerCase())
+                        || item.sub_title.toLowerCase().includes(query.toLowerCase())
+                        || item.price_display.toLowerCase().includes(query.toLowerCase()));
+                    filters.forEach(myProduct);
+                }
+            }
+        }
+
+        function updateCategory(query) {
+            document.getElementsByName('src')[0].placeholder='Search for ' + query + '...';
+            selectedCategory = query;
             console.log('src>> ' + query);
             document.getElementById("mycontent").innerHTML = "";
             myRemove();
@@ -1075,9 +1115,7 @@ Sebuah project jonki skripshit untuk membantu sobat, guna merealisasikan konsep 
             if (query == null || query == "") {
                 contents.forEach(myProduct);
             } else {
-                let filters = contents.filter(item => item.title.toLowerCase().includes(query.toLowerCase())
-                    || item.sub_title.toLowerCase().includes(query.toLowerCase())
-                    || item.price_display.toLowerCase().includes(query.toLowerCase()));
+                let filters = contents.filter(item => item.price_display.toLowerCase().includes(query.toLowerCase()));
                 filters.forEach(myProduct);
             }
         }
