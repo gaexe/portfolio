@@ -74,12 +74,16 @@ Created by pixpalette.com - online design magazine -->
                             PORTFOLIO
                             -->
                             <div role="tabpanel" class="tab-pane fade in active" id="buyTicket">
-                                <a href="#" target="_blank"><span class="label label-success">Production</span></a>
-                                <a href="#" target="_blank"><span class="label label-default">Prototype</span></a>
-                                <a href="#" target="_blank"><span class="label label-warning">experiment</span></a>
-                                <!-- <span class="label label-primary">Primary Label</span> 
-                                <span class="label label-info">Info Label</span> 
-                                <span class="label label-danger">Danger Label</span> -->
+                                <a href="#" onclick="updateResult(null)"><span
+                                        class="label label-default">all</span></a>
+                                <a href="#" onclick="updateResult('production')"><span
+                                        class="label label-success">production</span></a>
+                                <a href="#" onclick="updateResult('prototype')"><span
+                                        class="label label-primary">prototype</span></a>
+                                <a href="#" onclick="updateResult('component')"><span
+                                        class="label label-warning">component</span></a>
+                                <a href="#" onclick="updateResult('experiment')"><span
+                                        class="label label-danger">experiment</span></a>
                                 <br><br>
                                 <div class="row" id="mycontent">
 
@@ -1040,7 +1044,7 @@ PH7 Network adalah perusahaan terapis di Yogyakarta. Ini adalah proyek skripsi m
                 title: "Madanium",
                 sub_title: "Kotlin",
                 price_value: 180000,
-                price_display: "Contribution",
+                price_display: "Prototype",
                 description: `
 Aplikasi broker untuk menyimpan nilai dari fiat ke dinar atau dirham yang berbasis di Yogyakarta. Saya telah berkontribusi dalam memperbaiki bug dan meningkatkan UI/UX.
 `
@@ -1052,7 +1056,7 @@ Aplikasi broker untuk menyimpan nilai dari fiat ke dinar atau dirham yang berbas
                 title: "Coffee Shop",
                 sub_title: "CodeIgniter",
                 price_value: 180000,
-                price_display: "Web",
+                price_display: "Prototype",
                 description: `
 Sebuah project jonki skripshit untuk membantu sobat, guna merealisasikan konsep web profile sebuah kedai kopi di Jogja.
 `
@@ -1061,6 +1065,34 @@ Sebuah project jonki skripshit untuk membantu sobat, guna merealisasikan konsep 
         ];
 
         contents.forEach(myProduct);
+
+        function updateResult(query) {
+            console.log('src>> ' + query);
+            document.getElementById("mycontent").innerHTML = "";
+            myRemove();
+            refreshScript("js/allscript.js");
+
+            if (query == null || query == "") {
+                contents.forEach(myProduct);
+            } else {
+                let filters = contents.filter(item => item.title.toLowerCase().includes(query.toLowerCase())
+                    || item.sub_title.toLowerCase().includes(query.toLowerCase())
+                    || item.price_display.toLowerCase().includes(query.toLowerCase()));
+                filters.forEach(myProduct);
+            }
+        }
+
+        function refreshScript(src) {
+            var scriptElement = document.createElement('script');
+            scriptElement.id = "myjs";
+            scriptElement.src = src;
+            document.getElementsByTagName('body')[0].appendChild(scriptElement);
+        }
+
+        function myRemove() {
+            const element = document.getElementById("myjs");
+            element.remove();
+        }
 
         //model
         function myProduct(item, index) {
@@ -1166,7 +1198,7 @@ Sebuah project jonki skripshit untuk membantu sobat, guna merealisasikan konsep 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/allscript.js"></script>
+    <script id="myjs" src="js/allscript.js"></script>
 </body>
 
 </html>
