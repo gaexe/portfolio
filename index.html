@@ -47,6 +47,14 @@ Created by pixpalette.com - online design magazine -->
                         <h1>Mobile Developer</h1>
                     </div>
 
+                    <div class="gitstar" style="float: right;">
+                        <!-- Place this tag where you want the button to render. -->
+                        <a class="github-button" href="https://github.com/gaexe/portfolio"
+                            data-color-scheme="no-preference: light; light: light; dark: dark;" data-icon="octicon-star"
+                            data-size="large" data-show-count="true"
+                            aria-label="Star gaexe/portfolio on GitHub">Star</a>
+                    </div>
+
                     <h2>Wawan Chahyo Nugroho
                         <span id="currentTime"></span>
                     </h2>
@@ -71,7 +79,7 @@ Created by pixpalette.com - online design magazine -->
                         </ul>
 
                         <!-- Content -->
-                        <div class="tab-content"> 
+                        <div class="tab-content">
                             <!--
                             PORTFOLIO
                             -->
@@ -83,7 +91,7 @@ Created by pixpalette.com - online design magazine -->
                                         oninput="updateResult(this.value)" placeholder="Search for ..."
                                         style="border-radius: 0 16px 16px 0; background-color: #fff6c9; padding-left: 16px; font-weight: 400; border-color: yellow;">
                                 </div><!-- /input-group -->
-                                
+
                                 <a href="#" onclick="updateCategory(null)"><span
                                         class="label label-default">all</span></a>
                                 <a href="#" onclick="updateCategory('production')"><span
@@ -742,7 +750,8 @@ Created by pixpalette.com - online design magazine -->
                                     dunia elektronika dan totalitas menekuni dunia IT, termasuk Programming, Blogging &
                                     SEO.</h4>
                                 <br>
-                                <h4>Kematangan skill saya terbangun atas dasar wawasan berpikir kritis di dunia industri & akademis.</h4>
+                                <h4>Kematangan skill saya terbangun atas dasar wawasan berpikir kritis di dunia industri
+                                    & akademis.</h4>
                                 <br>
                                 <h4>
                                     <div class="alert alert-success" role="alert">
@@ -1106,7 +1115,7 @@ Sebuah project jonki skripshit untuk membantu sobat, guna merealisasikan konsep 
         }
 
         function updateCategory(query) {
-            document.getElementsByName('src')[0].placeholder='Search for ' + query + '...';
+            document.getElementsByName('src')[0].placeholder = 'Search for ' + query + '...';
             selectedCategory = query;
             console.log('src>> ' + query);
             document.getElementById("mycontent").innerHTML = "";
@@ -1238,6 +1247,8 @@ Sebuah project jonki skripshit untuk membantu sobat, guna merealisasikan konsep 
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
     <script id="myjs" src="js/allscript.js"></script>
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
 </body>
 
 </html>
