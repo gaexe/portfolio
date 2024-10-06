@@ -46,6 +46,7 @@ Created by pixpalette.com - online design magazine -->
     <link href='https://fonts.googleapis.com/css?family=Nixie+One' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,900" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://unpkg.com/@paybutton/paybutton/dist/paybutton.js"></script>
 </head>
 
 <body>
@@ -66,13 +67,9 @@ Created by pixpalette.com - online design magazine -->
                     <div class="logo">
                         <h1>Mobile Developer</h1>
                     </div>
-
                     <div class="gitstar" style="float: right;">
-                        <!-- Place this tag where you want the button to render. -->
-                        <a class="github-button" href="https://github.com/gaexe/portfolio"
-                            data-color-scheme="no-preference: light; light: light; dark: dark;" data-icon="octicon-star"
-                            data-size="large" data-show-count="true"
-                            aria-label="Star gaexe/portfolio on GitHub">Star</a>
+                        <a class="paybutton" to="ecash:qrrn6yvaah3p4jjm8uwet935hdh7apufjc6m9w8prz" hover-text="100 XEC"
+                            amount=100 random-satoshis="false" text="buy me coffee candy"></a>
                     </div>
 
                     <h2>Wawan Chahyo Nugroho
@@ -96,6 +93,13 @@ Created by pixpalette.com - online design magazine -->
                             <li role="presentation"><a href="#termCondition" aria-controls="termCondition" role="tab"
                                     data-toggle="tab">Tentangku</a></li>
                             <li role="presentation"><a href="https://www.gaexe.com/" target="_blank">Blog</a></li>
+                            <li style="margin-top: 5px !important;">
+                                <!-- Place this tag where you want the button to render. -->
+                                <a class="github-button" href="https://github.com/gaexe/portfolio"
+                                    data-color-scheme="no-preference: light; light: light; dark: dark;"
+                                    data-icon="octicon-star" data-size="large" data-show-count="true"
+                                    aria-label="Star gaexe/portfolio on GitHub">Star</a>
+                            </li>
                         </ul>
 
                         <!-- Content -->
@@ -866,7 +870,7 @@ Created by pixpalette.com - online design magazine -->
 
     <script>
         let contents = [
-        {
+            {
                 img: "images/iptv.jpg",
                 hyperlink: "https://www.linkedin.com/posts/wawanchahyonugroho_alhamdulillah-riset-membuahkan-hasil-studi-activity-7240204468221263872-g2nP?utm_source=share&utm_medium=member_desktop",
                 alert: "Akses ke repository tidak tersedia!",
